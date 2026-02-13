@@ -177,12 +177,15 @@ content ip {
     width: fit-content;
     padding: 1rem;
     border-radius: 0.75rem;
-    margin-right: 0.5rem;
+    margin-right: 0;
 }
 
 /* Container Styles */
 .ip-container {
     margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .roundbutton {
