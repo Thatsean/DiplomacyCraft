@@ -17,25 +17,34 @@
 				<ul>
 					<li><a href=https://diplomacycraft.swainlabs.net/map target="_blank">Map</a></li>
 					<li><a href=https://diplomacycraft.tebex.io target="_blank">Store</a></li>
-					<li><a href=wiki/index.html>Wiki</a></li>
-					<li><a href=changelog.html>Changelog</a></li>
+					<li><a href=https://diplomacycraft.swainlabs.net/wiki target="_blank">Wiki</a></li>
+					<li><a href=https://diplomacycraft.swainlabs.net/wiki/Catagory:Updates target="_blank">Updates</a></li>
 				</ul>
 			</nav>
 		</navbar>
 		<content>
-						<img src="Assets/Homebanner.png" alt="DiplomacyCraft Banner" style="float: right; width: 23rem; margin-left: 1rem; margin-bottom: 1rem; border-radius: 0.75rem;" />
-
+			<div class="Launch">
+				<h3>Server Launching in:</h3>
+				<div class="Countdown">
+					<h3><span id="days">0</span> Days </h3>
+					<h3><span id="hours">0</span> Hours </h3>
+					<h3><span id="minutes">0</span> Minutes </h3>
+					<h3><span id="seconds">0</span> Seconds </h3>
+				</div>
+				<p id="launch-date">3rd of April 2026 4pm AEST</p>
+			</div>
+			<img src="Assets/Homebanner.png" alt="DiplomacyCraft Banner" style="float: right; width: 23rem; margin-left: 1rem; margin-bottom: 1rem; border-radius: 0.75rem;" />
 			<h1>Join us now!</h1>
 			<div class="ip-container">
 				<ip>1.21.10+</ip>
 				<ip>Latest Bedrock</ip>
 			</div>			<h2>Java:</h2>
 			<div class="ip-container">
-				<ip>play.diplomacycraft.swainlabs.net</ip>
+				<ip>diplomacycraft.swainlabs.net</ip>
 			</div>
 			<h2>Bedrock:</h2>
 			<div class="ip-container">
-				<ip>play.diplomacycraft.swainlabs.net</ip>
+				<ip>diplomacycraft.swainlabs.net</ip>
 				<ip>Port: 19132</ip>
 			</div>
 			<h1>Explore the map!</h1>
@@ -58,7 +67,29 @@
                     <li><a href=https://discord.gg/3UTrbGT6GK target="_blank">Discord</a></li>
                 </ul>
             </nav>
-			<p>&copy; 2026 DiplomacyCraft | Version 26.0.aaaa</p>
+			<p>&copy; 2026 DiplomacyCraft</p>
 		</footer>
 	</body>
+	<script>
+		updateCountdown();
+		function updateCountdown() {
+			const launchDate = new Date("2026-04-03T05:00:00Z");
+			const now = new Date();
+			const difference = launchDate - now;
+			let remaining = difference;
+			const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+			remaining -= days * (1000 * 60 * 60 * 24);
+			const hours = Math.floor(remaining / (1000 * 60 * 60));
+			remaining -= hours * (1000 * 60 * 60);
+			const minutes = Math.floor(remaining / (1000 * 60));
+			remaining -= minutes * (1000 * 60);
+			const seconds = Math.floor(remaining / 1000);
+			document.getElementById("days").textContent = days;
+			document.getElementById("hours").textContent = hours;
+			document.getElementById("minutes").textContent = minutes;
+			document.getElementById("seconds").textContent = seconds;
+			
+		}
+		setInterval(updateCountdown, 1000);
+	</script>
 </html>
