@@ -226,33 +226,73 @@ content modlist a:hover {
     background-color: rgb(48, 92, 130);
     color: white;
     border-radius: 0.75rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    padding: 1rem;               /* consistent padding around the whole block */
+    margin: 1rem 0;
+    padding: 1rem;
     display: flex;
-    align-items: center;          /* vertical centering of flex children */
+    align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;                /* Allow wrapping on small screens */
 }
 
-/* Remove default margins from the first <h3> inside .Launch */
+/* Remove default margins from the first h3 */
 .Launch > h3:first-child {
     margin: 0;
-    line-height: 1.5;             /* match line-height of countdown numbers */
-    font-size: 1.25rem;           /* optional: match countdown h3 font size */
+    line-height: 1.5;
+    font-size: 1.25rem;
+    white-space: nowrap;            /* Prevent heading from breaking */
 }
 
 .Launch .Countdown {
-    display: flex;                /* simpler layout than inline-flex for this use */
-    align-items: center;          /* vertically center the numbers inside */
+    display: flex;
+    align-items: center;
     gap: 0.25rem;
-    padding: 0;                   /* remove all padding – no extra space needed */
-    /* If you need some vertical breathing room, use min-height instead: */
-    /* min-height: 3rem; */
+    padding: 0;
+    flex-wrap: wrap;                /* Allow countdown items to wrap if needed */
 }
 
 .Launch .Countdown h3 {
-    margin: 0;                     /* kill default margins */
+    margin: 0;
     font-size: 1.25rem;
     font-weight: 750;
-    line-height: 1.5;              /* same line-height as the first h3 */
+    line-height: 1.5;
+    white-space: nowrap;            /* Keep each "X Days," on one line */
+}
+
+/* 📱 Mobile adjustments */
+@media screen and (max-width: 600px) {
+    .Launch {
+        flex-direction: column;      /* Stack heading above countdown */
+        align-items: flex-start;     /* Align to left (or center if preferred) */
+        gap: 0.5rem;
+        padding: 0.75rem;            /* Slightly smaller padding */
+    }
+
+    .Launch > h3:first-child {
+        font-size: 1rem;             /* Reduce heading size */
+        margin-bottom: 0.25rem;       /* Add tiny space below */
+    }
+
+    .Launch .Countdown {
+        gap: 0.5rem;                 /* Slightly more gap for wrapped items */
+        justify-content: flex-start;  /* Keep items left-aligned */
+        width: 100%;                  /* Take full width for better wrapping */
+    }
+
+    .Launch .Countdown h3 {
+        font-size: 1rem;              /* Smaller numbers */
+        background: rgba(255,255,255,0.1); /* Optional: add subtle background for separation */
+        padding: 0.25rem 0.5rem;       /* Optional: make each unit look like a pill */
+        border-radius: 1rem;
+    }
+}
+
+/* 📱 Even smaller screens (optional) */
+@media screen and (max-width: 400px) {
+    .Launch .Countdown {
+        gap: 0.25rem;
+    }
+    .Launch .Countdown h3 {
+        font-size: 0.9rem;
+        padding: 0.2rem 0.4rem;
+    }
 }
